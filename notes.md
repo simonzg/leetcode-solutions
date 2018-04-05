@@ -69,3 +69,74 @@ m = l[:]
 l = ['a','b','c']
 l.insert(0,'z')
 ```
+
+* maxint
+
+```python
+import sys
+sys.maxsize
+```
+
+* reduce
+
+```python
+# in Python3, reduce is removed, use functools.reduce
+import operator, functools
+functools(operator.add, [1,2,3])
+```
+
+* Performance issue
+
+Use \*+- > / > \*\*
+Use as less as space
+Use no imports (other than high performance collections)
+
+* MySQL is null
+
+```SQL
+-- you need to use is null to judge field instead of = null
+```
+
+* loop
+
+```python
+for i in range(2,2):
+  print(i)
+```
+
+will print out nothing, since the loop is never entered
+
+* sort a string
+
+```python
+s = '4387'
+sorted(s) # ['3','4','7','8']
+```
+
+* usage of zip
+
+```python
+matrix = [
+  [ 1, 2, 3 ],
+  [ 4, 5, 6 ],
+  [ 7, 8, 9 ]
+]
+
+# row to column
+list(zip(*matrix))
+# [
+# [1,4,7],
+# [2,5,8],
+# [3,6,9]
+# ]
+
+# rotate
+list(zip(*matrix))[::-1]
+
+# [
+# [3,6,9],
+# [2,5,8],
+# [1,4,7]
+# ]
+#
+```
