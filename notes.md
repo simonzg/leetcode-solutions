@@ -140,3 +140,9 @@ list(zip(*matrix))[::-1]
 # ]
 #
 ```
+
+* find all of regexp
+
+```python
+re.findall('(/[a-zA-Z0-9._]*)', '/a/./b/../../c/')
+```
