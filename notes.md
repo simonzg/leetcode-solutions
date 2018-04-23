@@ -146,3 +146,13 @@ list(zip(*matrix))[::-1]
 ```python
 re.findall('(/[a-zA-Z0-9._]*)', '/a/./b/../../c/')
 ```
+
+* deque
+
+```python
+from collections import deque
+
+queue = deque([(1,2)])
+queue.popleft()
+queue.append((2,3))
+```

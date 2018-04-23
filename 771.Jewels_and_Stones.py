@@ -7,4 +7,3 @@ class Solution:
         """
         print([S.count(j) for j in J])
         return sum([S.count(j) for j in J])
-        
