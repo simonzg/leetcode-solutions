@@ -156,3 +156,11 @@ queue = deque([(1,2)])
 queue.popleft()
 queue.append((2,3))
 ```
+
+* bitwise operation
+
+```python
+n = 4
+n_bits = 8
+bits = [ (n>>bit) & 1 for bit in range(n_bits-1, -1, -1)]
+```
