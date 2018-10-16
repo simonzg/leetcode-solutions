@@ -172,3 +172,27 @@ In computer science, a problem is said to have optimal substructure if an optima
 Typically, a greedy algorithm is used to solve a problem with optimal substructure if it can be proved by induction that this is optimal at each step. Otherwise, provided the problem exhibits overlapping subproblems as well, dynamic programming is used. If there are no appropriate greedy algorithms and the problem fails to exhibit overlapping subproblems, often a lengthy but straightforward search of the solution space is the best alternative.
 
 In computer science, a problem is said to have overlapping subproblems if the problem can be broken down into subproblems which are reused several times or a recursive algorithm for the problem solves the same subproblem over and over rather than always generating new subproblems.
+
+
+* Loop for array of array
+
+```python
+x = [[1,2],[3,4]]
+
+for a,b in x:
+  print(a,b)
+
+# output
+# (1,2)
+# (3,4)
+```
+
+* Trick for setdefault
+
+```python
+x = {}
+x.setdefault('key', []).append('val#1')
+print(x)
+# output
+# {'key':['val#1']}
+```
