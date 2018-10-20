@@ -196,3 +196,11 @@ print(x)
 # output
 # {'key':['val#1']}
 ```
+
+* Trick for get
+```python
+x = {}
+print(x.get('test', 'default-value'))
+# output
+# default-value
+```
