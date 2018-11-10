@@ -1,6 +1,6 @@
-"""
-Reference: 
-"""
+'''
+REF: 
+'''
 class Solution:
     def findKthLargest(self, nums, k):
         q = sorted(nums[:k])

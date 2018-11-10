@@ -1,6 +1,6 @@
-"""
-Reference: https://leetcode.com/problems/binary-search-tree-iterator/discuss/52525/My-solutions-in-3-languages-with-Stack
-"""
+'''
+REF: https://leetcode.com/problems/binary-search-tree-iterator/discuss/52525/My-solutions-in-3-languages-with-Stack
+'''
 # Definition for a  binary tree node
 # class TreeNode(object):
 #     def __init__(self, x):

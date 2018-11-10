@@ -1,7 +1,7 @@
-"""
+'''
 Divide & Conquer
-Reference: https://leetcode.com/problems/different-ways-to-add-parentheses/discuss/66419/Python-easy-to-understand-solution-(divide-and-conquer).
-"""
+REF: https://leetcode.com/problems/different-ways-to-add-parentheses/discuss/66419/Python-easy-to-understand-solution-(divide-and-conquer).
+'''
 class Solution:
     def diffWaysToCompute(self, input):
         """

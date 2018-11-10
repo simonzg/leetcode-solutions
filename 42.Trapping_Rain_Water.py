@@ -1,21 +1,24 @@
+'''
+Two pointers
+
+This could also be solved by DP
+'''
 class Solution:
     def trap(self, height):
         """
         :type height: List[int]
         :rtype: int
         """
-        n = len(height)
-        
-        l,r = 0, n-1
+        l, r = 0, len(height)-1
         water = 0
-        minHeight = 0
-        
         while l<r:
-            while l<r and height[l] <= minHeight:
-                water += minHeight - height[l]
-                l+=1
-            while l<r and height[r] <= minHeight:
-                water += minHeight - height[r]
-                r-=1
-            minHeight = min(height[l], height[r])
+            level = min(height[l], height[r])
+            if height[l] < height[r]:
+                while height[l] <= level and l<r:
+                    water += level - height[l]
+                    l+=1
+            else:
+                while height[r] <= level and l<r:
+                    water += level - height[r]
+                    r-=1
         return water

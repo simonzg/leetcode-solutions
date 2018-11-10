@@ -1,6 +1,6 @@
-"""
-Reference: https://leetcode.com/problems/course-schedule-ii/discuss/179845/Python-solution-similar-to-207.-Course-Schedule
-"""
+'''
+REF: https://leetcode.com/problems/course-schedule-ii/discuss/179845/Python-solution-similar-to-207.-Course-Schedule
+'''
 class Solution:
     def findOrder(self, numCourses, prerequisites):
         """

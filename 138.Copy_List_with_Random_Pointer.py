@@ -1,11 +1,11 @@
-"""
-Reference: https://leetcode.com/problems/copy-list-with-random-pointer/discuss/43491/A-solution-with-constant-space-complexity-O(1)-and-linear-time-complexity-O(N)
+'''
+REF: https://leetcode.com/problems/copy-list-with-random-pointer/discuss/43491/A-solution-with-constant-space-complexity-O(1)-and-linear-time-complexity-O(N)
 
 Three rounds:
 1. append new node right behind original node
 2. set random pointer based on original node
 3. extract new nodes out to another linked list
-"""
+'''
 # Definition for singly-linked list with a random pointer.
 # class RandomListNode(object):
 #     def __init__(self, x):

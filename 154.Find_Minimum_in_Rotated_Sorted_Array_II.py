@@ -1,6 +1,6 @@
-"""
-Reference: NONE
-"""
+'''
+REF: NONE
+'''
 class Solution:
     def findMin(self, nums):
         """

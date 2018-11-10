@@ -1,39 +1,44 @@
+"""
+REF: https://leetcode.com/problems/lru-cache/discuss/45952/Python-concise-solution-with-comments-(Using-OrderedDict).
+"""
+
+import collections
 class LRUCache:
 
     def __init__(self, capacity):
         """
         :type capacity: int
         """
-        self.table = {}
-        self.capacity = capacity
-        self.stack = []
-        
+        self.dict = collections.OrderedDict()
+        self.remain = capacity
+
     def get(self, key):
         """
         :type key: int
         :rtype: int
         """
-        if key in self.table:
-            self.updateStack(key)
-            return self.table[key]
-        else:
+        if key not in self.dict:
             return -1
-        
-    def updateStack(self, key):
-        if key in self.stack:
-            self.stack.remove(key)
-        else:
-            if len(self.stack) >= self.capacity:
-                lru = self.stack.pop(0)
-                self.table.pop(lru, None)
-        
-        self.stack.append(key)
-        
+        self.dict.move_to_end(key)
+        return self.dict[key]
+
     def put(self, key, value):
         """
         :type key: int
         :type value: int
         :rtype: void
         """
-        self.updateStack(key)
-        self.table[key] = value
+        if key in self.dict:
+            self.dict.move_to_end(key)
+        elif self.remain <= 0:
+            self.dict.popitem(False)
+        else:
+            self.remain -= 1
+        self.dict[key] = value
+        
+
+
+# Your LRUCache object will be instantiated and called as such:
+# obj = LRUCache(capacity)
+# param_1 = obj.get(key)
+# obj.put(key,value)

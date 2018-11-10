@@ -1,7 +1,7 @@
-"""
+'''
 Radix Sort
-Reference: https://leetcode.com/problems/maximum-gap/discuss/50649/Simple-radix-sort-solution-in-python
-"""
+REF: https://leetcode.com/problems/maximum-gap/discuss/50649/Simple-radix-sort-solution-in-python
+'''
 class Solution:
     def maximumGap(self, nums):
         """

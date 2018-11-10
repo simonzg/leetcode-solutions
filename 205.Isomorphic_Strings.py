@@ -1,6 +1,6 @@
-"""
-Reference: https://leetcode.com/problems/isomorphic-strings/discuss/57941/Python-different-solutions-(dictionary-etc).
-"""
+'''
+REF: https://leetcode.com/problems/isomorphic-strings/discuss/57941/Python-different-solutions-(dictionary-etc).
+'''
 class Solution:
     def isIsomorphic(self, s, t):
         """

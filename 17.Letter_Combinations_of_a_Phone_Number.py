@@ -4,12 +4,12 @@ class Solution:
         :type digits: str
         :rtype: List[str]
         """
-        digit_map = dict(zip('2,3,4,5,6,7,8,9'.split(','), 'abc,def,ghi,jkl,mno,pqrs,tuv,wxyz'.split(',')))
-        n = len(digits)
-        if not digits:
-            return []
-        r = ['']
-        
-        for i in range(n):
-            r = [ prefix + ch for prefix in r for ch in digit_map[digits[i]]]
-        return r
+        convert_map = {'2':'abc', '3':'def','4':'ghi','5':'jkl','6':'mno','7':'pqrs','8':'tuv','9':'wxyz'}
+        res = []
+        for d in digits:
+            chs = convert_map[d]
+            if not res:
+                res = list(chs)
+            else:
+                res = [ s+ch for ch in chs for s in res ]
+        return res

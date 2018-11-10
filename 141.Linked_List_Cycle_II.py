@@ -1,5 +1,5 @@
-"""
-Reference: https://leetcode.com/problems/linked-list-cycle-ii/discuss/44781/Concise-O(n)-solution-by-using-C++-with-Detailed-Alogrithm-Description
+'''
+REF: https://leetcode.com/problems/linked-list-cycle-ii/discuss/44781/Concise-O(n)-solution-by-using-C++-with-Detailed-Alogrithm-Description
 
 Loop entry point E
 Meeting point M
@@ -12,7 +12,7 @@ because fast pointer traveled twice disance of slow pointer, so
 2*(L1+L2) = L1+L2 + n*C
 when n=1 (the first meet)
 Then L1 = C - L2
-"""
+'''
 # Definition for singly-linked list.
 # class ListNode(object):
 #     def __init__(self, x):
