@@ -1,27 +1,26 @@
+# DFS with memorization
+# O(N^2)
+
+
 class Solution:
-    def wordBreak(self, s, wordDict):
-        """
-        :type s: str
-        :type wordDict: List[str]
-        :rtype: bool
-        """
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
         dic = {}
         for w in wordDict:
             dic.setdefault(w[0], []).append(w)
-        
         memo = {}
-        def dp(i):
-            if i >= len(s):
+
+        def dfs(s):
+            if s == "":
                 return True
-            if i not in memo:
-                if s[i] not in dic:
-                    return False
-                ans = []
-                for w in dic[s[i]]:
-                    n = len(w)
-                    if s[i:i+n] == w:
-                        ans.append(dp(i+n))
-                memo[i] = any(ans)
-            return memo[i]
-        
-        return dp(0)
+            if s in memo:
+                return memo[s]
+            ch = s[0]
+            for prefix in dic.get(ch, []):
+                if prefix == s[:len(prefix)]:
+                    if dfs(s[len(prefix):]):
+                        memo[s] = True
+                        return True
+            memo[s] = False
+            return False
+
+        return dfs(s)
