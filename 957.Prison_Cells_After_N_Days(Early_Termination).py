@@ -6,12 +6,11 @@ class Solution:
         days = [cells]
         n = 0
         for day in range(N):
-            nxt = [0]
+            nxt = [0]*len(cells)
             for i in range(1, len(cells)-1):
-                val = int(cells[i-1] == cells[i+1])
-                nxt.append(val)
-            nxt.append(0)
+                nxt[i] = int(cells[i-1] == cells[i+1])
             cells = nxt
+
             if cells in days:
                 days.append(cells)
                 n = days.index(cells)

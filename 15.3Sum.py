@@ -1,40 +1,38 @@
-class Solution:
-    def threeSum(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[List[int]]
-        """
-        results = []
-        nums.sort()
-        numbers = set(nums[:])
-        for i,v in enumerate(nums):
-            newNums = nums[:]
-            del newNums[i]
-            combinations = self.findSum(newNums, 0-v)
-            if len(combinations) > 0:
-                for c in combinations:
-                    c.insert(0,v)
-                    c.sort()
-                    if (not c in results):
-                        results.append(c)
-        return results
-                
-            
-    def findSum(self, nums, targetSum):
-        i = 0
-        j = len(nums)-1
-        results = []
-        while (i<j):
-            currentSum = nums[i]+nums[j]
-            if currentSum == targetSum:
-                results.append([nums[i], nums[j]])
-                i += 1
-            if currentSum < targetSum:
-                i += 1
-            if currentSum > targetSum:
-                j -= 1
-        return results
+# Loop over the array to degrade the problem to twoSum
+# time complexity: O(N) for loop, O(logN) for twoSum, so total O(N*logN)
+# space complexity: O(N)
 
-if __name__=="__main__":
-    r = Solution().threeSum([-4, -2,0,2,4,6])
-    print(r)
+
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        n = len(nums)
+        nums = sorted(nums)
+
+        def twoSum(i, target):
+            ans = []
+            l, r = i, n-1
+            while l < r:
+                lv, lr = nums[l], nums[r]
+                s = lv + lr
+                if s < target:
+                    l += 1
+                elif s > target:
+                    r -= 1
+                else:
+                    ans.append([nums[l], nums[r]])
+                    while l < r and nums[l] == lv:
+                        l += 1
+                    while l < r and nums[r] == lr:
+                        r -= 1
+            return ans
+        i = 0
+        ans = []
+        while i < n-2:
+            v = nums[i]
+            for item in twoSum(i+1, -nums[i]):
+                ans.append([v]+item)
+
+            while i < n-2 and nums[i] == v:
+                i += 1
+
+        return ans

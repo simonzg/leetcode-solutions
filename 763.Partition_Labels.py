@@ -1,22 +1,22 @@
 # Greedy solution
-# O(N)
+# time complexity: O(N)
+# space complexity: O(N)
 
 
 class Solution:
     def partitionLabels(self, S: str) -> List[int]:
-        memo = {}
-
-        # build memo here
+        memo = {}  # key: character, value: last index of this char
         for i, ch in enumerate(S):
-            memo.setdefault(ch, []).append(i)
+            memo[ch] = i
 
-        start, end = 0, 0
+        start = i = 0
+        end = 0
         ans = []
-
-        # loop through the string, and cut off the far-reaching word
-        for i, ch in enumerate(S):
-            end = max(memo[ch][-1], end)
+        while i < len(S):
+            ch = S[i]
+            end = max(end, memo[ch])
             if end == i:
                 ans.append(end-start+1)
                 start = end+1
+            i += 1
         return ans

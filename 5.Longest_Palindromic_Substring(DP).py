@@ -1,3 +1,8 @@
+# DP
+# time complexity: O(N^2)
+# space complexity: O(N^2)
+
+
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         if not s:
@@ -13,7 +18,7 @@ class Solution:
             if dp[i][i+1] and len(ans) < 2:
                 ans = s[i:i+2]
 
-        for i in range(n-1):
+        for i in range(n-1):  # notice the loop range
             for j in range(i+1, n):
                 if s[i] == s[j] and dp[i+1][j-1]:
                     dp[i][j] = True

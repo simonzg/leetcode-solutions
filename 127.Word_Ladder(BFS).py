@@ -1,42 +1,34 @@
-# BFS with layer
-# O(MxN)
-# M: length of words
-# N: total number of words
+# BFS with visited words list (avoid duplicate)
+# time complexity: O(M*N)
+# space complexity: O(M*N)
 import collections
 
 
 class Solution:
     def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
-        wordSet = set(wordList)
-
-        # generate memo
+        # generate memo for faster access
         memo = {}
-        for w in wordSet:
+        for w in wordList+[beginWord]:
             for i in range(len(w)):
-                mask = w[:i]+'*'+w[i+1:]
-                memo.setdefault(mask, set([])).add(w)
+                mask = w[:i]+"*"+w[i+1:]
+                memo.setdefault(mask, []).append(w)
 
-        if endWord not in wordSet:
+        if endWord not in wordList:
             return 0
 
-        layer = collections.defaultdict(list)
-        layer[beginWord] = [[beginWord]]
-        leftover = wordSet
-        count = 0
-
-        while layer:
-            count += 1
-            newLayer = collections.defaultdict(list)
-            for w in layer:
-                for i in range(len(w)):
-                    mask = w[:i]+'*'+w[i+1:]
-                    words = memo.get(mask, set([]))
-
-                    if endWord in words:
-                        return count+1
-                    for newWord in words.intersection(leftover):
-                        newLayer[newWord] += [path+[newWord]
-                                              for path in layer[w]]
-            leftover -= set(newLayer.keys())
-            layer = newLayer
+        wordSet = set(wordList)
+        queue = collections.deque([([beginWord], 1)])
+        visited = {}
+        while queue:
+            path, moves = queue.popleft()
+            w = path[-1]
+            if w == endWord:
+                return moves
+            if w in visited:
+                continue
+            for i in range(len(w)):
+                mask = w[:i]+"*"+w[i+1:]
+                for extendWord in memo.get(mask, []):
+                    queue.append((path+[extendWord], moves+1))
+            visited[w] = True
         return 0

@@ -1,5 +1,5 @@
 # DFS with memorization
-# O(N^2)
+# time complexity: O(N^2)
 
 
 class Solution:
