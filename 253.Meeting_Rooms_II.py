@@ -1,25 +1,22 @@
-# Definition for an interval.
-# class Interval:
-#     def __init__(self, s=0, e=0):
-#         self.start = s
-#         self.end = e
+# sort & merge
+# time complexity: O(N*logN)
+# space complexity: O(N)
+
 
 class Solution:
-    def minMeetingRooms(self, intervals):
-        """
-        :type intervals: List[Interval]
-        :rtype: int
-        """
-        intervals.sort(key=lambda x:x.start)
+    def minMeetingRooms(self, intervals: List[List[int]]) -> int:
         rooms = []
-        for i in intervals:
+        intervals.sort(key=lambda v: v[0])
+        for interval in intervals:
             merged = False
-            for m in rooms:
-                if i.start >= m[-1].end:
-                    m.append(i)
+            for i, room in enumerate(rooms):
+                if room[-1][1] <= interval[0]:
+                    room.append(interval)
+                    rooms[i] = room
                     merged = True
                     break
-            if not rooms or not merged:
-                rooms.append([i])
+            if not merged:
+                rooms.append([interval])
+                continue
 
         return len(rooms)
