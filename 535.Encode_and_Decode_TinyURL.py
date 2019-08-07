@@ -1,37 +1,45 @@
+# two reversed maps
+
+
 class Codec:
     def __init__(self):
-        self.map = {}
-        
-    def get_key(self):
-        key = ''
-        for i in range(6):
-            d = random.randint(0, 35)
-            if 0<=d<=9:
-                key+=str(d)
-            else:
-                key+=chr(d)
-        
+        self.cache = {}
+        self.reverse = {}
+
+    def randomHex(self, n):
+        chs = '0123456789abcdefghijklmnopqrstuvwxyz'
+        ans = ''
+        for i in range(n):
+            ans += chs[random.randint(0, len(chs)-1)]
+        return ans
+
     def encode(self, longUrl):
         """Encodes a URL to a shortened URL.
-        
+
         :type longUrl: str
         :rtype: str
         """
-        key = self.get_key()
-        while key in self.map:
-            key = self.get_key()
-        self.map[key] = longUrl
-            
+        if longUrl in self.reverse:
+            return self.reverse[longUrl]
+        randHex = self.randomHex(8)
+        while randHex in self.cache:
+            randHex = self.randomHex(8)
+        self.cache[randHex] = longUrl
+        url = 'http://tinyurl.com/'+randHex
+        self.reverse[longUrl] = url
+        return url
 
     def decode(self, shortUrl):
         """Decodes a shortened URL to its original URL.
-        
+
         :type shortUrl: str
         :rtype: str
         """
-        key = shortUrl
-        if key in self.map:
-            return self.map[key]
+        if not shortUrl:
+            return ''
+        randHex = shortUrl.replace('http://tinyurl.com/', '')
+        if randHex in self.cache:
+            return self.cache[randHex]
         return ''
 
 # Your Codec object will be instantiated and called as such:
